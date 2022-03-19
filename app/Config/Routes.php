@@ -19,6 +19,11 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
+$routes->group("api", function ($routes) {
+    $routes->post("register", "Register::index");
+    $routes->post("login", "Login::index");
+    $routes->get("users", "User::index", ['filter' => 'authFilter']);
+});
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
