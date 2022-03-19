@@ -43,7 +43,7 @@ class Login extends BaseController
             "email" => $user['email'],
         );
 
-        $token = JWT::encode($payload, $key);
+        $token = JWT::encode($payload, $key, "HS256");
 
         $response = [
             'message' => 'Login Succesful',
